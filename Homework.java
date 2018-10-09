@@ -85,11 +85,21 @@ public class Homework {
 
     // 7th test: Dropdown select value
     @Test
-    public void test7DropdownSelectValue() {
+    public void dropDownChangeLocToRu() {
         driver.get("https://google.com/accounts");
-        driver.findElement(By.xpath("//div[@jsname='wQNmvb']")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.textToBe(By.xpath("//a[text() = 'Google Account Help']"), "Google Account Help"));
+        driver.findElement(By.xpath("//div[@jsname='LgbsSe']")).click();
+        driver.findElement(By.xpath("//div[@class='OA0qNb ncFHed']/div[@data-value='ru']")).click();
+        String pageTitle = driver.findElement(By.id("headingText")).getText();
+        Assert.assertEquals(pageTitle, "Вход");
+    }
+
+    @Test
+    public void dropDown() {
+        driver.get("https://google.com/accounts");
+        driver.findElement(By.xpath("//div[@jsname='LgbsSe']")).click();
+        driver.findElement(By.xpath("//div[@class='OA0qNb ncFHed']/div[@data-value='da']")).click();
+        String pageTitle = driver.findElement(By.id("headingText")).getText();
+        Assert.assertEquals(pageTitle, "Log ind");
     }
 
     // 8th test: Help -> new tab
